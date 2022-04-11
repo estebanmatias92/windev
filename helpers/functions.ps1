@@ -118,8 +118,7 @@ function Restart-And-Run {
     Set-Key -Path $global:RegRunKey -KeyName $KeyName -Value $Run
     Write-Host ""
     Read-Host -Prompt "The program needs to reboot, press any key to continue..." 
-    #Restart-Computer
-    . $Global:ScriptFile
+    Restart-Computer
     exit    
 }   
 

@@ -26,13 +26,14 @@ function Start-Tasks {
                         $Task = $Tasks[$k]   
 
                         # Prompting the message
+                        Write-Host ""
                         Write-Host " |===|" 
                         Write-Host " |   |  $($Environment.Name) | $($Group.Name) $($Task.Name)"
                         Write-Host " |===|"
                         Write-Host ""
 
                         # Running the Task
-                        #Invoke-Expression $Task.Run
+                        Invoke-Expression $Task.Run
 
                         # Removing the Task immediately after it runs
                         $TempList[$i][$Environment.Name][$j][$Group.Name].RemoveAt($k)

@@ -1,19 +1,22 @@
+# Config Folder Path
+$ConfigDir = "$($PSScriptRoot)\config"
+
 # Settings for Windows Apps
 [System.Collections.ArrayList]$global:WindowsConfigs = @(
     @{
         Name = "Pwsh Modules"
-        Run = ". $($PSScriptRoot)\configs\shell-modules\pwsh.ps1"
+        Run = ". $($ConfigDir)\shell-modules\pwsh.ps1"
     },
     @{
         Name = "SSH Keys"
-        Run = ". $($PSScriptRoot)\configs\ssh.sh"
+        Run = ". $($ConfigDir)\ssh.ps1"
     },
     @{
         Name = "Github SSH Credentials"
-        Run = ". $($PSScriptRoot)\configs\github-ssh-login.ps1"
+        Run = ". $($ConfigDir)\github-ssh-login.ps1"
     },
     @{
         Name = "Dotfiles (Powershell and Windows Terminal settings)"
-        Run = ". $($PSScriptRoot)\configs\dotfiles.ps1"
+        Run = ". $($ConfigDir)\dotfiles.ps1"
     }
 )
