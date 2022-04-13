@@ -5,18 +5,18 @@ $ConfigDir = "$($PSScriptRoot)\config"
 [System.Collections.ArrayList]$global:WindowsConfigs = @(
     @{
         Name = "Pwsh Modules"
-        Run = ". $($ConfigDir)\shell-modules\pwsh.ps1"
+        Run = "pwsh -c $($ConfigDir)\shell-modules\pwsh.ps1"
     },
     @{
         Name = "SSH Keys"
-        Run = ". $($ConfigDir)\ssh.ps1"
+        Run = "pwsh -c $($ConfigDir)\ssh.ps1"
     },
     @{
         Name = "Github SSH Credentials"
-        Run = ". $($ConfigDir)\github-ssh-login.ps1"
+        Run = "pwsh -c $($ConfigDir)\github-ssh-login.ps1"
     },
     @{
         Name = "Dotfiles (Powershell and Windows Terminal settings)"
-        Run = ". $($ConfigDir)\dotfiles.ps1"
+        Run = "pwsh -c $($ConfigDir)\dotfiles.ps1"
     }
 )

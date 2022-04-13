@@ -1,80 +1,56 @@
-# Tab completition and command history
-Write-Output "-----------------------------"
-Write-Output "--- Installing PSReadLine ---"
-Write-Output "-----------------------------"
-Write-Output ""
-Install-Module -Name PSReadLine -MinimumVersion 2.2.2
-Write-Output "Module installed."
+# Handy Helper to avoid repeated work
+function Install-PwshModule {
+    [CmdletBinding()]
+    param (
+        # Parameter help description
+        [Parameter(
+            Position = 0, 
+            ValueFromRemainingArguments
+            )]
+        $Module        
+    )
 
+    Write-Output " <> Installing $($Module[0])"
+    Write-Output ""
+
+    if (get-module -Name $Module[0] -ListAvailable) {
+        Uninstall-Module -Name $Module[0]
+    }
+    Install-Module -Name $Module -Force
+
+    Write-Output "Module installed."
+}
+
+# Tab completition and command history
+Install-PwshModule PSReadLine -MinimumVersion 2.2.2
 
 # Adds status and auto-completion
-Write-Output ""
-Write-Output "---------------------------"
-Write-Output "--- Installing posh-git ---"
-Write-Output "---------------------------"
-Write-Output ""
-Install-Module -Name posh-git -Force
+Install-PwshModule posh-git 
 $env:POSH_GIT_ENABLED = $true
-Write-Output "Module installed."
-
 
 # PowerShell module that provides utilities for working with SSH connections within PowerShell.
-Write-Output ""
-Write-Output "------------------------------"
-Write-Output "--- Installing posh-sshell ---"
-Write-Output "------------------------------"
-Write-Output ""
-Install-Module -Name posh-sshell -Force
-Write-Output "Module installed."
-
+Install-PwshModule posh-sshell
 
 # Better SSH session managment
-Write-Output ""
-Write-Output "---------------------------"
-Write-Output "--- Installing Posh-SSH ---"
-Write-Output "---------------------------"
-Write-Output ""
-Install-Module -Name Posh-SSH -Force
-Write-Output "Module installed."
-
+Install-PwshModule Posh-SSH 
 
 # Install prompt theme engine and make it available for any shell
-Write-Output ""
-Write-Output "-----------------------------"
-Write-Output "--- Installing Oh-My-Posh ---"
-Write-Output "-----------------------------"
-Write-Output ""
-Install-Module -Name oh-my-posh -Force
+Install-PwshModule oh-my-posh 
 $env:POSH_PATH
-Write-Output "Module installed."
-
 
 # A PowerShell module to show file and folder icons in the terminal.
-Write-Output ""
-Write-Output "---------------------------------"
-Write-Output "--- Installing Terminal-Icons ---"
-Write-Output "---------------------------------"
-Write-Output ""
-Install-Module -Name Terminal-Icons
-Write-Output "Module installed."
-
+Install-PwshModule Terminal-Icons
 
 # This little tool lets you jump directly to your frequently used directories in PowerShell.
-Write-Output ""
-Write-Output "--------------------"
-Write-Output "--- Installing Z ---"
-Write-Output "--------------------"
-Write-Output ""
-Install-Module -Name z
-Write-Output "Module installed."
-
+Install-PwshModule z
 
 # Update all modules
+Write-Output " <> Updating all modules ---"
 Write-Output ""
-Write-Output "--------------------------"
-Write-Output "--- Update all modules ---"
-Write-Output "--------------------------"
-Write-Output ""
+
 Update-Module
+Get-InstalledModule
+
+Write-Output ""
 Write-Output "The modules are up to date"
 Start-Sleep 2
