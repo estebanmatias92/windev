@@ -2,23 +2,49 @@
 function Install-PwshModule {
     [CmdletBinding()]
     param (
+        [Parameter(
+            Mandatory = $True,
+            Position = 0           
+            )]
+        [String]
+        $Name,
         # Parameter help description
         [Parameter(
-            Position = 0, 
-            ValueFromRemainingArguments
+            Position = 1,
+            ValueFromRemainingArguments = $True
             )]
-        $Module        
+        $Arguments        
     )
 
-    Write-Output " <> Installing $($Module[0])"
-    Write-Output ""
-
-    if (get-module -Name $Module[0] -ListAvailable) {
-        Uninstall-Module -Name $Module[0]
+    # Trying to find the version flag and the version number required to install, once it's found, both values are store to use them with install-module()
+    foreach ($Tag in @("-RequiredVersion", "-MinimumVersion", "-MaximumVersion")) {
+        $i = $Arguments.tolower().IndexOf($Tag.ToLower())
+        if ($i -ge 0) {
+            $Version = $Arguments[$i+1]
+            break
+        }
     }
-    Install-Module -Name $Module -Force
 
-    Write-Output "Module installed."
+    # Looking for the module
+    if ($Version) {
+        $FullyQualifedName = @{ModuleName = $Name; ModuleVersion = $Version}
+        $Module = Get-Module -FullyQualifiedName $FullyQualifedName
+    } else {
+        $Module = Get-Module -Name $Name -ListAvailable
+    }
+
+    Write-Host " <> Installing $($Name)."
+    Write-Host ""
+
+    # If the module was installed, just give a message, if not, proceed to install it
+    if ($Module) {
+        Write-Host "$($Module.Name) $($Module.Version) already installed."
+    } else {
+        $Module = Invoke-Expression "Install-Module $($Name) $([string]$Arguments) -PassThru -Force -AllowClobber -AcceptLicense"
+        Write-Host "$($Module.Name) $($Module.Version) is now installed."
+    }
+
+    Write-Host ""
 }
 
 # Tab completition and command history
@@ -45,12 +71,12 @@ Install-PwshModule Terminal-Icons
 Install-PwshModule z
 
 # Update all modules
-Write-Output " <> Updating all modules ---"
-Write-Output ""
+Write-Host " <> Updating all modules."
+Write-Host ""
 
 Update-Module
 Get-InstalledModule
 
-Write-Output ""
-Write-Output "The modules are up to date"
-Start-Sleep 2
+Write-Host ""
+Write-Host "The modules are up to date."
+Start-Sleep 1
