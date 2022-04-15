@@ -5,10 +5,10 @@ echo "-----------------------------------"
 echo "--- Configuring global git data ---"
 echo "-----------------------------------"
 echo ""
-read -p "Enter your github user.name: " mygitusername
-read -p "Enter your github user.email: " mygituseremail
-git config --global user.name "${mygitusername}"
-git config --global user.email "${mygituseremail}"
+read -p "Enter your github user.name: " username
+read -p "Enter your github user.email: " email
+git config --global user.name "${username}"
+git config --global user.email "${email}"
 git config --global init.defaultBranch main
 echo ""
 echo "--global config data: "

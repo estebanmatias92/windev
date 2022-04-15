@@ -100,3 +100,44 @@ function Wait-Until {
             } until (-not(Get-Process $Process -ErrorAction SilentlyContinue))
         }"   
 }
+
+# Write-Host Spam
+function Write-Title {
+    [CmdletBinding()]
+    param (
+        # Parameter help description
+        [Parameter(
+            Mandatory = $True, 
+            Position = 0
+        )]
+        [string]
+        $String
+    )
+
+    Write-Host ""
+    Write-Host " |===|"
+    Write-Host " |   |  $($String)"
+    Write-Host " |===|"
+    Write-Host ""
+}
+
+
+# Write-Host Spam
+function Write-Subtitle {
+    [CmdletBinding()]
+    param (
+        # Parameter help description
+        [Parameter(
+            Mandatory = $True, 
+            Position = 0
+        )]
+        [string]
+        $String
+    )
+
+
+    Write-Host "        "
+    Write-Host "       |=|  $($String)"
+    Write-Host "        "
+
+}
