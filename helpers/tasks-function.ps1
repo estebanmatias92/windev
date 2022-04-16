@@ -33,7 +33,9 @@ function Start-Tasks {
                         Write-Host ""
 
                         # Removing the Task immediately after it runs
-                        $TempList[$i][$Environment.Name][$j][$Group.Name].RemoveAt($k)
+                        if ($TempList[$i][$Environment.Name][$j][$Group.Name][$k]) {                            
+                            $TempList[$i][$Environment.Name][$j][$Group.Name].RemoveAt($k)
+                        }
 
                         # Reboot the system and pass the $List status as argument to be stored and run where it left before
                         if ($Task.Restart) {                                            
@@ -45,10 +47,14 @@ function Start-Tasks {
                     }
                 }
                 # Delete the section once it has finished executing its tasks     
-                $TempList[$i][$Environment.Name].Remove($j)   
+                if ($TempList[$i][$Environment.Name][$j]) {
+                    $TempList[$i][$Environment.Name].Remove($j)   
+                }
             }
         }
         # Delete the Environment once has finished its tasks too
-        $TempList.Remove($i)
+        if ($TempList[$i]) {            
+            $TempList.Remove($i)
+        }
     }
 }

@@ -1,10 +1,12 @@
+SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+
 $ConfigDir = "/libraries/wsl/config"
 
 # Settings for Linux Apps
 [System.Collections.ArrayList]$global:WslConfigs = @(
     @{
         Name = "Zsh Modules"
-        Run = "$($global:wsl) bash -c '`$(pwd)$($ConfigDir)/shell-modules/zsh.sh'"
+        Run = "$($global:wsl) bash -c '`$(SCRIPT_DIR)$($ConfigDir)/shell-modules/zsh.sh'"
     },
     @{
         Name = "SSH Keys"
