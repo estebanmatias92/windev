@@ -28,11 +28,12 @@ Install-PwshModule Terminal-Icons
 Install-PwshModule z
 
 # Update all modules
-Write-Subtitle "Updating all modules."
+Write-Subtitle "Updating all modules"
 
 Update-Module -force -AcceptLicense
 Get-InstalledModule
 
 Write-Host ""
 Write-Host "The modules are up to date."
+Write-Host ""
 Start-Sleep 3

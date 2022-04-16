@@ -2,7 +2,7 @@
 
 # Configuring git user data
 echo ""
-echo "       |=|  Configuring global git data."
+echo "       |=|  Configuring global git data"
 echo ""
 read -p "Enter your github user.name: " username
 read -p "Enter your github user.email: " email
@@ -19,7 +19,7 @@ sleep 3
 
 # Login to Github, save public SSH Key and get the credential token
 echo ""
-echo "       |=|  Login to Github and saving the ssh public key."
+echo "       |=|  Login to Github and saving the ssh public key"
 echo ""
 gh auth login
 echo "Github auto login done."

@@ -6,7 +6,7 @@ $RootDir = (get-item $PSScriptRoot).parent.parent.parent.FullName
 
 
 # Configuring git user data
-Write-Subtitle "Configuring global git data."
+Write-Subtitle "Configuring global git data"
 $username = Read-Host "Enter your github user.name"
 $email = Read-Host "Enter your github user.email"
 git config --global user.name $username
@@ -21,7 +21,7 @@ Start-Sleep 3
 
 
 # Login to Github, save public SSH Key and get the credential token
-Write-Subtitle "Login to Github and saving the ssh public key."
+Write-Subtitle "Login to Github and saving the ssh public key"
 gh auth login
 Write-Host "Github auto login done."
 Write-Host ""
