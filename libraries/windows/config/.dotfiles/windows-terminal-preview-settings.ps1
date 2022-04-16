@@ -4,4 +4,4 @@ $FilePath = "$($Env:LOCALAPPDATA)\Packages\Microsoft.WindowsTerminalPreview_8wek
 
 ((New-Object System.Net.WebClient).DownloadString('https://gist.githubusercontent.com/estebanmatias92/b1bfbf584ca8e18a70f6d46d89c88c27/raw/2a73780fbc8f17d5cabac7df22f4ba23f3e5eeac/terminal-preview-settings.json')) > $FilePath
 
-Write-Host $FilePath
+Write-Host "File updated: $($FilePath)"

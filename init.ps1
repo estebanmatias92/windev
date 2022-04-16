@@ -1,5 +1,4 @@
 # Script Paths
-$Script:RootDir = $PSScriptRoot
 $Global:ScriptFile = $MyInvocation.MyCommand.Definition
 # File to store program status between reboots
 $Global:TempFile = $PSScriptRoot+"\temp-data.clixml"
@@ -36,7 +35,7 @@ if ($Null -eq $Status) {
         TaskList = [System.Collections.ArrayList]@(
             @{
                 Windows = [System.Collections.ArrayList]@(
-                    #@{Installing = $Global:WindowsApps},
+                    @{Installing = $Global:WindowsApps},
                     @{Configuring = $Global:WindowsConfigs}
                 )
             },

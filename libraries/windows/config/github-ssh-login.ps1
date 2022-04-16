@@ -1,7 +1,7 @@
+$RootDir = (get-item $PSScriptRoot).parent.parent.parent.FullName
 # -------------------------------------
 # Imports
 # -------------------------------------
-$RootDir = (get-item $PSScriptRoot).parent.parent.FullName
 . $RootDir\helpers\misc.ps1
 
 

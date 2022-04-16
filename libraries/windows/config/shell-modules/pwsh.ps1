@@ -1,7 +1,7 @@
+$RootDir = (get-item $PSScriptRoot).parent.parent.parent.parent.FullName
 # -------------------------------------
 # Imports
 # -------------------------------------
-$RootDir = (get-item $PSScriptRoot).parent.parent.FullName
 . $RootDir\helpers\misc.ps1
 
 # Tab completition and command history
@@ -30,9 +30,9 @@ Install-PwshModule z
 # Update all modules
 Write-Subtitle "Updating all modules."
 
-Update-Module
+Update-Module -force -AcceptLicense
 Get-InstalledModule
 
 Write-Host ""
 Write-Host "The modules are up to date."
-Start-Sleep 1
+Start-Sleep 3

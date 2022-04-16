@@ -141,6 +141,7 @@ function Install-PwshModule {
 
     # If the module was installed, just give a message, if not, proceed to install it
     if ($Module) {
+        $Module = $Module[$Module.Length-1] # Getting the newer version installed
         Write-Host "$($Module.Name) $($Module.Version) already installed."
     } else {
         $Module = Invoke-Expression "Install-Module $($Name) $([string]$Arguments) -PassThru -Force -AllowClobber -AcceptLicense"
