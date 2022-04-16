@@ -1,3 +1,10 @@
+# -------------------------------------
+# Imports
+# -------------------------------------
+$RootDir = (get-item $PSScriptRoot).parent.parent.FullName
+. $RootDir\helpers\misc.ps1
+
+
 # Configuring git user data
 Write-Subtitle "Configuring global git data."
 $username = Read-Host "Enter your github user.name"

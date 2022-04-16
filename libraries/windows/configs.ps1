@@ -1,4 +1,3 @@
-# Config Folder Path
 $ConfigDir = "$($PSScriptRoot)\config"
 
 # Settings for Windows Apps

@@ -1,12 +1,12 @@
-# -------------------------------------
-# Imports
-# -------------------------------------
-# Script Path
+# Script Paths
+$Script:RootDir = $PSScriptRoot
 $Global:ScriptFile = $MyInvocation.MyCommand.Definition
 # File to store program status between reboots
 $Global:TempFile = $PSScriptRoot+"\temp-data.clixml"
 
-# All the calls to the documents
+# -------------------------------------
+# Imports
+# -------------------------------------
 . $PSScriptRoot\helpers\file-managment.ps1
 . $PSScriptRoot\helpers\misc.ps1
 . $PSScriptRoot\helpers\functions.ps1
@@ -30,12 +30,13 @@ if ($Null -eq $Status) {
     
     # Default Values
     $Status = @{
+        # This feature is not in use at the moment
         Step = "A"
         # This is the main array that organizes all the tasks to run
         TaskList = [System.Collections.ArrayList]@(
             @{
                 Windows = [System.Collections.ArrayList]@(
-                    @{Installing = $Global:WindowsApps},
+                    #@{Installing = $Global:WindowsApps},
                     @{Configuring = $Global:WindowsConfigs}
                 )
             },

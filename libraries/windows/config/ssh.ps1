@@ -1,3 +1,10 @@
+# -------------------------------------
+# Imports
+# -------------------------------------
+$RootDir = (get-item $PSScriptRoot).parent.parent.FullName
+. $RootDir\helpers\misc.ps1
+
+
 # Creating SSH Keys
 Write-Subtitle "Creating SSH keys."
 $email = Read-Host "Enter your github user.email"

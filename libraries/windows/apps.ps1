@@ -32,7 +32,7 @@
     @{
         # Wait the user to configure WSL Machine
 	    Name = "$($LinuxDistro.Title) (settings)"
-        Run = "Write-Host 'Waiting for the linux machine to be configured...'; Wait-Until $($LinuxDistro.Exe); Write-Host 'Successfully installed and configured'"
+        Run = "Write-Host 'Waiting for the linux machine to be configured...'; Wait-Until $($LinuxDistro.Exe); Write-Host 'Successfully installed and configured.'"
     },
     @{
         Name = "PowerShell"

@@ -1,3 +1,10 @@
+# -------------------------------------
+# Imports
+# -------------------------------------
+$RootDir = (get-item $PSScriptRoot).parent.parent.FullName
+. $RootDir\helpers\misc.ps1
+
+
 # Dotfiles Folder Path
 $DotfilesDir = "$($PSScriptRoot)\.dotfiles"
 
