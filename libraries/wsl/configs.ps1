@@ -1,5 +1,5 @@
 # Setting up the Configuration directory path from within linux (is getting it from the linux filesystem)
-$ConfigDir = (wsl -d $LinuxDistro.Name --cd $PSScriptRoot bash -c pwd) + "/config"
+$ConfigDir = invoke-expression "($($global:wsl) --cd $($PSScriptRoot) bash -c pwd)+'/config'"
 
 # Settings for Linux Apps
 [System.Collections.ArrayList]$global:WslConfigs = @(
