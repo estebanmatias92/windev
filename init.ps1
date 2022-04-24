@@ -1,7 +1,7 @@
 # Script Paths
 $Global:ScriptFile = $MyInvocation.MyCommand.Definition
 # File to store program status between reboots
-$Global:TempFolder = $PSScriptRoot + "\temp"
+$Global:TempFolder = $Env:TEMP + "\WinDev"
 $Global:TempFile = $Global:TempFolder + "\database.clixml"
 
 # -------------------------------------

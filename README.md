@@ -15,6 +15,7 @@ Repeatable windows 10 development environment. Installs and configures all the t
 - Windows Terminal Preview
 - Docker Desktop ***(Reboot)***
 #### Configure on Windows
+- Download and Install **[Meslo](https://www.programmingfonts.org/#meslo)** and **[Caskaydia Cove](https://www.programmingfonts.org/#cascadia-code)** Fonts
 - Download Pwsh Modules ***(PSReadline, posh-git, posh-sshell, Posh-SSH, oh-my-posh, Terminal-Icons, z)***
 - Create SSH Key pair
 - Set SSH Github credentials

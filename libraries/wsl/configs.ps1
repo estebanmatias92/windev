@@ -5,18 +5,18 @@ $ConfigDir = invoke-expression "($($global:wsl) --cd $($PSScriptRoot) bash -c pw
 [System.Collections.ArrayList]$global:WslConfigs = @(
     @{
         Name = "Zsh Modules"
-        Run = "$($global:wsl) bash -c '$($ConfigDir)/shell-modules/zsh.sh'"
+        Run = "$($global:wsl) bash -c '$ConfigDir/shell-modules/zsh.sh'"
     },
     @{
         Name = "SSH Keys"
-        Run = "$($global:wsl) bash -c '$($ConfigDir)/ssh.sh'"
+        Run = "$($global:wsl) bash -c '$ConfigDir/ssh.sh'"
     },
     @{
         Name = "Github SSH Credentials"
-        Run = "$($global:wsl) bash -c '$($ConfigDir)/github-ssh-login.sh'"
+        Run = "$($global:wsl) bash -c '$ConfigDir/github-ssh-login.sh'"
     },
     @{
         Name = "Dotfiles"
-        Run = "$($global:wsl) bash -c '$($ConfigDir)/dotfiles.sh'"
+        Run = "$($global:wsl) bash -c '$ConfigDir/dotfiles.sh'"
     }
 )

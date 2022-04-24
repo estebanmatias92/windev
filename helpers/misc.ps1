@@ -1,5 +1,5 @@
 # Creating global variables
-$Script:TempFolder = (Split-Path $PSScriptRoot)+"\temp"
+$Script:TempFolder = $Env:TEMP + "\WinDev"
 
 # Function to Clone Objects
 function Copy-Object {
