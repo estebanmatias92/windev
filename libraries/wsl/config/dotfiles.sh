@@ -10,13 +10,13 @@ DOTFILES_DIR="${SCRIPT_DIR}/.dotfiles"
 sed -i 's+ZSH_THEME="robbyrussell"+ZSH_THEME="agnoster"+g' ~/.zshrc
 sed -i 's+plugins=(git)+plugins=(git ssh-agent z tmux zsh-syntax-highlighting themes)+g' ~/.zshrc
 cat -v "${DOTFILES_DIR}/.zshrc" >> ~/.zshrc
-cat -v "${DOTFILES_DIR}/Tmux.config" >> ~/Tmux.config
+cat -v "${DOTFILES_DIR}/.tmux.config" >> ~/.tmux.config
 
 # Prompting message
 echo "File updated: ~/.zshrc"
-echo "File updated: ~/Tmux.config"
+echo "File updated: ~/.tmux.config"
 echo ""
 
 # Opening files to check
-code ~/.zshrc ~/Tmux.config
+code ~/.zshrc ~/.tmux.config
 sleep 2
