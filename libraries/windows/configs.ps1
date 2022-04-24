@@ -3,6 +3,10 @@ $ConfigDir = "$($PSScriptRoot)\config"
 # Settings for Windows Apps
 [System.Collections.ArrayList]$global:WindowsConfigs = @(
     @{
+        Name = "Fonts"
+        Run = "pwsh -c $($ConfigDir)\fonts.ps1"
+    },
+    @{
         Name = "Pwsh Modules"
         Run = "pwsh -c $($ConfigDir)\shell-modules\pwsh.ps1"
     },

@@ -4,11 +4,11 @@ function Clear-Data {
         # Parameter help description
         [Parameter(Mandatory = $True)]
         [String]
-        $FilePath
+        $Path
     )
     
-    if (Test-Path $FilePath) {
-        Remove-Item -Path $FilePath -Force
+    if (Test-Path $Path) {
+        Remove-Item -Path $Path -Recurse -Force
     } 
 }
 

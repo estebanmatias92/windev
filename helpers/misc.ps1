@@ -1,3 +1,6 @@
+# Creating global variables
+$Script:TempFolder = (Split-Path $PSScriptRoot)+"\temp"
+
 # Function to Clone Objects
 function Copy-Object {
     [CmdletBinding()]
@@ -189,5 +192,66 @@ function Write-Subtitle {
     Write-Host "        "
     Write-Host "       |=|  $($String)"
     Write-Host "        "
+
+}
+
+
+# Installing fonts
+function Install-Fonts {
+    [CmdletBinding()]
+    param (
+        # Parameter help description
+        [Parameter(
+            Mandatory = $True, 
+            Position = 0
+        )]
+        [string]
+        $FolderPath
+    )
+    
+    $fonts = (New-Object -ComObject Shell.Application).Namespace(0x14)
+
+    foreach ($file in Get-ChildItem $FolderPath *.ttf)
+    {
+        $fileName = $file.Name
+        if (-not(Test-Path -LiteralPath "C:\Windows\Fonts\$fileName" )) {
+            Write-Host $fileName
+            Get-ChildItem $file | ForEach-Object { $fonts.CopyHere($_.fullname) }
+        }
+    }
+
+    Copy-Item -Path $FolderPath -Include *.ttf -Destination "C:\Windows\Fonts\" -Force
+ 
+}
+
+Function Download-Install-Fonts {
+    [CmdletBinding()]
+    param (
+        # Parameter help description
+        [Parameter(
+            Position = 1,
+            ValueFromRemainingArguments = $True
+            )]
+        $Urls      
+    )
+
+    # Downloading every file from url to the TempFolder
+    foreach ($url in $Urls) {
+        Start-BitsTransfer -Source $url -Destination $Script:TempFolder 
+    }
+
+    # Folder where zip files will be unzip
+    $TempFontFolder = $Script:TempFolder+"\fonts"
+
+    # Unzip all Zip files
+    foreach ($file in Get-ChildItem $Script:TempFolder *.zip)
+    {
+        # Create TempFont Folder if it doesn't exist and unzip the files there
+        Expand-Archive -Path $file.FullName -DestinationPath $TempFontFolder -Force
+    }
+
+    
+    # Now it's ready to install all the fonts from the TempFont folder
+    Install-Fonts $TempFontFolder
 
 }

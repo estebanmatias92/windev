@@ -1,7 +1,8 @@
 # Script Paths
 $Global:ScriptFile = $MyInvocation.MyCommand.Definition
 # File to store program status between reboots
-$Global:TempFile = $PSScriptRoot+"\temp-data.clixml"
+$Global:TempFolder = $PSScriptRoot + "\temp"
+$Global:TempFile = $Global:TempFolder + "\database.clixml"
 
 # -------------------------------------
 # Imports
@@ -58,11 +59,16 @@ Clear-Any-Restart
 # Flow stop
 #Read-Host -Prompt "The program will install and configure apps, press any key to continue..."
 
+# Create Temporary Folder if it doesn't exist
+if (-not(Test-Path $Global:TempFolder)) {
+    $Null = New-Item $Global:TempFolder -ItemType Directory
+}
+
 # Core Process
 Start-Tasks -List $Status.TaskList
 
 # Remove temporary data files
-Clear-Data -FilePath $Global:TempFile
+Clear-Data $Global:TempFolder
 
 # Flow stop and exit
 Read-Host -Prompt "The program is finished, press any key to exit..."

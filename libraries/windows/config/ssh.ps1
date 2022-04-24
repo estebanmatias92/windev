@@ -16,6 +16,9 @@ Start-Sleep 1
 
 # Start the ssh-agent service/deamon
 Write-Subtitle "Starting SSH-AGEN"
+# But First set SSH Service to start everytime the SSH-AGENT is called
+Start-Process 'powershell.exe' -Wait -Verb runAs -ArgumentList '-Command Get-Service -Name ssh-agent | Set-Service -StartupType Manual'
+# Then Run the Agent
 ssh-agent
 Write-Host "The ssh-agent is running." 
 Get-Service ssh-agent

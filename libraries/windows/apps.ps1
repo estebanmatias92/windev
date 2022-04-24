@@ -9,20 +9,20 @@
 [System.Collections.ArrayList]$global:WindowsApps = @(    
     @{
         Name = "Visual Studio Code"
-        Run = "winget install -i -e --id Microsoft.VisualStudioCode"
+        Run = "winget install -i -e --id Microsoft.VisualStudioCode --accept-source-agreements --accept-package-agreements"
     },
     @{
         Name = "Git"
-        Run = "winget install -i -e --id Git.Git"
+        Run = "winget install -i -e --id Git.Git --accept-source-agreements --accept-package-agreements"
         Restart = $True
     },
     @{
         Name = "Github CLI"
-        Run = "winget install -i -e --id GitHub.cli"
+        Run = "winget install -i -e --id GitHub.cli --accept-source-agreements --accept-package-agreements"
     },
     @{
         Name = "Github Desktop"
-        Run = "winget install -i -e --id GitHub.GitHubDesktop"
+        Run = "winget install -i -e --id GitHub.GitHubDesktop --accept-source-agreements --accept-package-agreements"
     },
     @{
         Name = "$($LinuxDistro.Title)"
@@ -36,15 +36,15 @@
     },
     @{
         Name = "PowerShell"
-        Run = "winget install -i -e --id Microsoft.PowerShell"
+        Run = "winget install -i -e --id Microsoft.PowerShell --accept-source-agreements --accept-package-agreements"
     },
     @{
         Name = "Windows Terminal Preview"
-        Run = "winget install -i -e --id Microsoft.WindowsTerminal.Preview"
+        Run = "winget install -i -e --id Microsoft.WindowsTerminal.Preview --accept-source-agreements --accept-package-agreements"
     },
     @{
         Name = "Docker Desktop"
-        Run = "winget install -i -e --id Docker.DockerDesktop"
+        Run = "winget install -i -e --id Docker.DockerDesktop --accept-source-agreements --accept-package-agreements"
         Restart = $True
     }
 )

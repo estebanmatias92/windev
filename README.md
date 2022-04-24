@@ -35,9 +35,12 @@ Repeatable windows 10 development environment. Installs and configures all the t
 
 ### Running the script
 #### Prerequisites
-- First of all, make sure Windows Powershell **ExecutionPolicy** is at least RemoteSigned *(Run this as **Administrator**)*
+- First of all this program uses **Winget** (A command line tool) to install everything, so you'll need to have installed the ***App Installer** from the Microsoft Store.*
+
+- Second, make sure Windows Powershell **ExecutionPolicy** is at least RemoteSigned. *(Run this as **Administrator**)*
 
 *`Set-ExecutionPolicy -ExecutionPolicy RemoteSigned`*
+
 
 - You have to be in the project's root folder to execute the line below
 
