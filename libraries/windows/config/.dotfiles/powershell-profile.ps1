@@ -3,6 +3,6 @@
 $StartDir = if ($Env:OneDrive) { $Env:OneDrive } else { $Home }
 $FilePath = "$($StartDir)\Documents\PowerShell\Microsoft.PowerShell_profile.ps1"
 
-((New-Object System.Net.WebClient).DownloadString('https://gist.githubusercontent.com/estebanmatias92/863bc01532c6e9593de234b8f88b6bd6/raw/59bb432f8da67ad8356917b28d382ce8f4642f04/Microsoft.PowerShell_profile.ps1')) > $FilePath
+((New-Object System.Net.WebClient).DownloadString('https://gist.githubusercontent.com/estebanmatias92/863bc01532c6e9593de234b8f88b6bd6/raw/Microsoft.PowerShell_profile.ps1')) > $FilePath
 
 $FilePath
