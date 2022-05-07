@@ -48,3 +48,7 @@ Repeatable windows 10 development environment. Installs and configures all the t
 #### Start the program
 
 *`./init.ps1`*
+
+#### Or use one line (to rule them all)
+
+*`Start-Process 'powershell.exe' -Wait -Verb runAs -ArgumentList '-Command Set-ExecutionPolicy -ExecutionPolicy RemoteSigned'; ./init.ps1`*
