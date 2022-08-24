@@ -9,6 +9,16 @@ $RootDir = (get-item $PSScriptRoot).parent.parent.parent.FullName
 $DotfilesDir = "$($PSScriptRoot)\.dotfiles"
 
 # Configuring Powershell 
+Write-Subtitle "Creating environment variables"
+# Get the IP v4
+$ipv4 = (Get-NetIPAddress | Where-Object {$_.AddressState -eq "Preferred" -and $_.ValidLifetime -lt "24:00:00"}).IPAddress
+# Create the environment var
+[System.Environment]::SetEnvironmentVariable('IPAddress', $ipv4)
+Write-Host "Environment (IPAddress) created."
+Write-Host ""
+Start-Sleep 1
+
+# Configuring Powershell 
 Write-Subtitle "Downloading PowerShell profile and copying it"
 . $DotfilesDir\powershell-profile.ps1 
 Write-Host "PowerShell profile is copied."
