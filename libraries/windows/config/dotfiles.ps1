@@ -15,9 +15,9 @@ $IPv4 = (Get-NetIPAddress | Where-Object {$_.AddressState -eq "Preferred" -and $
 $WslIPv4 = (Get-NetIPAddress | Where-Object {$_.AddressState -eq "Preferred" -and $_.InterfaceAlias -match "wsl" -and $_.AddressFamily -eq "IPv4"}).IPAddress
 
 # Create the environment var
-[System.Environment]::SetEnvironmentVariable('IPAddress', $IPv4, [System.EnvironmentVariableTarget]::User)
+[System.Environment]::SetEnvironmentVariable('IPAddress', $IPv4)
 Write-Host "Environment (IPAddress) created."
-[System.Environment]::SetEnvironmentVariable('WslIPAddress', $WslIPv4, [System.EnvironmentVariableTarget]::User)
+[System.Environment]::SetEnvironmentVariable('WslIPAddress', $WslIPv4)
 Write-Host "Environment (WslIPAddress) created."
 Write-Host ""
 Start-Sleep 1
