@@ -8,13 +8,17 @@ $RootDir = (get-item $PSScriptRoot).parent.parent.parent.FullName
 # Dotfiles Folder Path
 $DotfilesDir = "$($PSScriptRoot)\.dotfiles"
 
-# Configuring Powershell 
+# Configuring Powershell
 Write-Subtitle "Creating environment variables"
 # Get the IP v4
-$ipv4 = (Get-NetIPAddress | Where-Object {$_.AddressState -eq "Preferred" -and $_.ValidLifetime -lt "24:00:00"}).IPAddress
+$IPv4 = (Get-NetIPAddress | Where-Object {$_.AddressState -eq "Preferred" -and $_.ValidLifetime -lt "24:00:00" -and $_.AddressFamily -eq "IPv4"}).IPAddress
+$WslIPv4 = (Get-NetIPAddress | Where-Object {$_.AddressState -eq "Preferred" -and $_.InterfaceAlias -match "wsl" -and $_.AddressFamily -eq "IPv4"}).IPAddress
+
 # Create the environment var
-[System.Environment]::SetEnvironmentVariable('IPAddress', $ipv4, [System.EnvironmentVariableTarget]::User)
+[System.Environment]::SetEnvironmentVariable('IPAddress', $IPv4, [System.EnvironmentVariableTarget]::User)
 Write-Host "Environment (IPAddress) created."
+[System.Environment]::SetEnvironmentVariable('WslIPAddress', $WslIPv4, [System.EnvironmentVariableTarget]::User)
+Write-Host "Environment (WslIPAddress) created."
 Write-Host ""
 Start-Sleep 1
 
