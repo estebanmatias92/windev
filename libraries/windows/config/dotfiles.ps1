@@ -24,6 +24,7 @@ Start-Sleep 1
 
 # Configuring Powershell 
 Write-Subtitle "Downloading PowerShell profile and copying it"
+((New-Object System.Net.WebClient).DownloadString('https://gist.githubusercontent.com/estebanmatias92/863bc01532c6e9593de234b8f88b6bd6/raw/Microsoft.PowerShell_profile.ps1')) > $FilePath
 . $DotfilesDir\powershell-profile.ps1 
 Write-Host "PowerShell profile is copied."
 Write-Host ""

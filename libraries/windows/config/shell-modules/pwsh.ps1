@@ -18,8 +18,8 @@ Install-PwshModule posh-sshell
 Install-PwshModule Posh-SSH 
 
 # Install prompt theme engine and make it available for any shell
-winget install JanDeDobbeleer.OhMyPosh -s winget
-$env:POSH_PATH
+#winget install JanDeDobbeleer.OhMyPosh -s winget
+#$env:POSH_PATH
 
 # A PowerShell module to show file and folder icons in the terminal.
 Install-PwshModule Terminal-Icons
