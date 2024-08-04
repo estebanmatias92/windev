@@ -4,9 +4,35 @@
 echo ""
 echo "       |=|  Installing Zsh and make it default Shell"
 echo ""
-yes | sudo apt install unzip zsh && 
+sudo apt install -y --no-install-recommends unzip zsh && 
 chsh -s $(which zsh)
 echo "Zsh shell installed."
+echo ""
+sleep 1
+
+
+# Install lsd
+echo ""
+echo "       |=|  Installing lsd (LS color themes)"
+echo ""
+$lsd_version="1.1.2"
+mkdir ~/downloads
+$lsd_binary="~/downloads/lsd_amd64.deb"
+curl -#fSLo $lsd_binary https://github.com/lsd-rs/lsd/releases/download/v$lsd_version/lsd-musl_${lsd_version}_amd64.deb
+sudo apt install $lsd_binary
+rm -f $lsd_binary
+echo "lsd installed."
+echo ""
+sleep 1
+
+
+# Install fzf
+echo ""
+echo "       |=|  Installing fzf (Fuzzy Finder)"
+echo ""
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+~/.fzf/install
+echo "fzf installed."
 echo ""
 sleep 1
 
@@ -29,54 +55,58 @@ echo ""
 sleep 1
 
 
-# Install Zoxide
+# Install zoxide
 echo ""
 echo "       |=|  Installing Zoxide (Smarter CD)"
 echo ""
 curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh 
-echo "Zoxide installed."
+echo "zoxide installed."
 echo ""
 sleep 1
 
 
-# Install Zoxide
+# Install oh-my-posh
 echo ""
 echo "       |=|  Installing Oh-My-Posh (PROMPT themes)"
 echo ""
 curl -s https://ohmyposh.dev/install.sh | bash -s 
-echo "Oh-My-Posh installed."
+echo "oh-my-posh installed."
 echo ""
 sleep 1
 
 
-# Install Zsh Syntax Highlighting
+ZSH_CUSTOM_PLUGINS="${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins"
+
+# Install zsh-syntax-highlighting
 echo ""
-echo "       |=|  Installing Zsh Syntax Highlighting (Oh-My-Zsh plugin)"
+echo "       |=|  Installing zsh-syntax-highlighting (Oh-My-Zsh plugin)"
 echo ""
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-echo "Zsh Syntax highlighting installed."
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM_PLUGINS}/zsh-syntax-highlighting
+echo "zsh-syntax-highlighting installed."
 echo ""
 sleep 1
 
 
-# Install Zsh AutoSuggestions
+# Install zsh-autosuggestions
 echo ""
-echo "       |=|  Installing Zsh AutoSuggestions (Oh-My-Zsh plugin)"
+echo "       |=|  Installing zsh-autosuggestions (Oh-My-Zsh plugin)"
 echo ""
-git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-echo "Zsh AutoSuggestions installed."
+git clone https://github.com/zsh-users/zsh-autosuggestions.git ${ZSH_CUSTOM_PLUGINS}/zsh-autosuggestions
+echo "zsh-autosuggestions installed."
 echo ""
 sleep 1
 
 
-# Install Zsh Completions
+# Install zsh-completions
 echo ""
-echo "       |=|  Installing Zsh Completions (Oh-My-Zsh plugin)"
+echo "       |=|  Installing zsh-completions (Oh-My-Zsh plugin)"
 echo ""
-git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions
-echo "Zsh Completions installed."
+git clone https://github.com/zsh-users/zsh-completions.git ${ZSH_CUSTOM_PLUGINS}/zsh-completions
+echo "zsh-completions installed."
 echo ""
 sleep 1
+
+
 
 
 # Update Oh-My-Zsh
