@@ -5,34 +5,27 @@ $RootDir = (get-item $PSScriptRoot).parent.parent.parent.FullName
 . $RootDir\helpers\misc.ps1
 
 
-# Dotfiles Folder Path
-$DotfilesDir = "$($PSScriptRoot)\.dotfiles"
+# Copying User configuration
+# List of configuration files
+$downloads = @(
+    [PSCustomObject]@{
+        Url = "https://gist.githubusercontent.com/estebanmatias92/79083d148344f9e565679e6551a65074/raw/Microsoft.PowerShell_profile.ps1"
+        Destination = "$($Env:OneDrive ?? $Home)\Documents\PowerShell\Microsoft.PowerShell_profile.ps1"
+    },
+    [PSCustomObject]@{
+        Url = "https://gist.githubusercontent.com/estebanmatias92/79083d148344f9e565679e6551a65074/raw/2fa69cbf0ccb9c2dc3fddb205a460de1906e398b/terminal.settings.json"
+        Destination = "$Env:LOCALAPPDATA\Packages\Microsoft.WindowsTerminalPreview_8wekyb3d8bbwe\LocalState\settings.json"
+    }
+)
 
-# Configuring Powershell
-Write-Subtitle "Creating environment variables"
-# Get the IP v4
-$IPv4 = (Get-NetIPAddress | Where-Object {$_.AddressState -eq "Preferred" -and $_.ValidLifetime -lt "24:00:00" -and $_.AddressFamily -eq "IPv4"}).IPAddress
-$WslIPv4 = (Get-NetIPAddress | Where-Object {$_.AddressState -eq "Preferred" -and $_.InterfaceAlias -match "wsl" -and $_.AddressFamily -eq "IPv4"}).IPAddress
+# Download files using the list
+Write-Subtitle "Downloading files: Microsoft.PowerShell_profile.ps1, settings.json (terminal)"
 
-# Create the environment var
-[System.Environment]::SetEnvironmentVariable('IPAddress', $IPv4)
-Write-Host "Environment (IPAddress) created."
-[System.Environment]::SetEnvironmentVariable('WslIPAddress', $WslIPv4)
-Write-Host "Environment (WslIPAddress) created."
+foreach ($file in $downloads) {
+    Invoke-WebRequest -Uri $file.Url -OutFile $file.Destination
+}
+
+Write-Host "Config files were downloaded and copied."
 Write-Host ""
-Start-Sleep 1
 
-# Configuring Powershell 
-Write-Subtitle "Downloading PowerShell profile and copying it"
-((New-Object System.Net.WebClient).DownloadString('https://gist.githubusercontent.com/estebanmatias92/863bc01532c6e9593de234b8f88b6bd6/raw/Microsoft.PowerShell_profile.ps1')) > $FilePath
-. $DotfilesDir\powershell-profile.ps1 
-Write-Host "PowerShell profile is copied."
-Write-Host ""
-Start-Sleep 1
-
-# Configuring Windos Terminal Preview
-Write-Subtitle "Downloading Windows Terminal Preview settings and copying them"
-. $DotfilesDir\windows-terminal-preview-settings.ps1
-Write-Host "Windows Terminal Preview settings are copied."
-Write-Host ""
 Start-Sleep 2

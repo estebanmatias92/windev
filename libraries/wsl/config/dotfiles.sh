@@ -1,14 +1,11 @@
 #!/bin/bash
 
-# Copying configuration
-curl -sSL "https://gist.githubusercontent.com/estebanmatias92/9f8b1ad34ac9994402149af11cef3338/raw/.zshrc" | tee ~/.zshrc > /dev/null
-curl -sSL "https://gist.githubusercontent.com/estebanmatias92/9f8b1ad34ac9994402149af11cef3338/raw/.tmux.config" >> ~/.zshrc
+# Copying User configuration
+echo "Downloading files: .zshrc, .tmux.config"
 
-# Prompting message
-echo "File updated: ~/.zshrc"
-echo "File updated: ~/.tmux.config"
+curl -#fSO "https://gist.githubusercontent.com/estebanmatias92/9f8b1ad34ac9994402149af11cef3338/raw/{.zshrc,.tmux.config}"
+
+echo "Dotfiles were downloaded and copied."
 echo ""
 
-# Opening files to check
-code ~/.zshrc ~/.tmux.config
 sleep 2
