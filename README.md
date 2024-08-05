@@ -35,7 +35,7 @@ Repeatable windows 10 development environment. Installs and configures all the t
 #### Configure on WSL Machine
 
 - Download unzip
-- Download/Install Zsh and Zsh modules ***(git, ssh-agent, tmux, zsh-syntax-highlighting, zsh-autosuggestions, zsh-completions, zoxide, oh-my-posh, lsd)***
+- Download/Install Zsh and Zsh modules ***(git, ssh-agent, tmux, zsh-syntax-highlighting, zsh-autosuggestions, zsh-completions, zoxide, oh-my-posh, lsd, fzf)***
 - Create SSH Key pair
 - Set SSH Github credentials
 - Import Custom settings files ([.zshrc](https://gist.github.com/estebanmatias92/9f8b1ad34ac9994402149af11cef3338/#file-zshrc), [.tmux.config](https://gist.github.com/estebanmatias92/9f8b1ad34ac9994402149af11cef3338/#file-tmux-config))

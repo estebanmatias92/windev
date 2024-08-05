@@ -75,7 +75,7 @@ echo ""
 sleep 1
 
 
-ZSH_CUSTOM_PLUGINS="${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins"
+ZSH_CUSTOM_PLUGINS="${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins"
 
 # Install zsh-syntax-highlighting
 echo ""
@@ -101,12 +101,10 @@ sleep 1
 echo ""
 echo "       |=|  Installing zsh-completions (Oh-My-Zsh plugin)"
 echo ""
-git clone https://github.com/zsh-users/zsh-completions.git ${ZSH_CUSTOM_PLUGINS}/zsh-completions
+git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM_PLUGINS}/zsh-completions
 echo "zsh-completions installed."
 echo ""
 sleep 1
-
-
 
 
 # Update Oh-My-Zsh
