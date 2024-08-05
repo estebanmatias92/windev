@@ -19,7 +19,7 @@ Repeatable windows 10 development environment. Installs and configures all the t
 #### Configure on Windows
 
 - Download and Install **[Meslo](https://www.programmingfonts.org/#meslo)** and **[Caskaydia Cove](https://www.programmingfonts.org/#cascadia-code)** Fonts
-- Download Pwsh Modules ***(posh-git, PSReadline, posh-sshell, Posh-SSH, zoxide, oh-my-posh, Terminal-Icons)***
+- Download Pwsh Modules ***(posh-git, PSReadline, zoxide, oh-my-posh, Terminal-Icons, fzf)***
 - Create SSH Key pair
 - Set SSH Github credentials
 - Import Custom settings files ***([Microsoft.PowerShell_profile.ps1](https://gist.github.com/estebanmatias92/79083d148344f9e565679e6551a65074/#file-microsoft-powershell_profile-ps1), [settings.json (windows terminal)](https://gist.github.com/estebanmatias92/79083d148344f9e565679e6551a65074/#file-terminal-settings-json))***
